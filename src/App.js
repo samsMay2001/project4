@@ -3,10 +3,11 @@ import './App.css';
 import Root from './components/Root/root';
 import Home from './components/home/home';
 import { AppContext } from './appContext';
+import RootLayout from './components/rootlayout/rootlayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Root/>}>
+    <Route path='/' element={<RootLayout/>}>
       <Route index element={<Home/>}/>
     </Route>
   )
