@@ -1,0 +1,10 @@
+.backgroundimg{
+    position: absolute;
+    background-color: #dadada;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+.ltn__testimonial-area {
+    position: relative;
+}

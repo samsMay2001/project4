@@ -1,0 +1,6 @@
+.my-featured-blog-list{
+    border: 1px dashed grey;
+    /* display: flex;
+    flex-direction: row; */
+    height: 400px;
+}
