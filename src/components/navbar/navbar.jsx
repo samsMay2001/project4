@@ -32,7 +32,7 @@ function NavBar () {
                                             <NavLink to="/">Home</NavLink>
                                         </li>
                                         <li className="menu-icon">
-                                            <NavLink to="/shop-left-sidebar">Listings</NavLink>
+                                            <NavLink to="/listings">Listings</NavLink>
                                         </li>
                                         <li className="menu-icon">
                                             <NavLink to="/service">Services</NavLink>
