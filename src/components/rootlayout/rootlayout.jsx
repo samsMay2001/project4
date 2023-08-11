@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import './rootlayout.css'
+import CallToAction from "../CallToAction/calltoaction";
 
 function RootLayout() {
     return ( 
@@ -10,6 +11,7 @@ function RootLayout() {
             <main className="my-main">
                 <Outlet/>
             </main>
+            <CallToAction/>
             <Footer/>
         </div>
      );
