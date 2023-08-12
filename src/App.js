@@ -6,6 +6,7 @@ import RootLayout from './components/rootlayout/rootlayout';
 import Listings from './components/Listings/Listings';
 import ListingDetail from './components/ListingDetail/listingdetail';
 import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path='/listings' element={<Listings/>}/>
       <Route path='/listing-details' element={<ListingDetail/>}/>
       <Route path='/login' element={<SignIn/>}/>
+      <Route path='/register' element={<Register/>}/>
     </Route>
   )
 )

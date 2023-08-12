@@ -41,10 +41,10 @@ function NavBar () {
                                             <NavLink to="/about">About</NavLink>
                                         </li>
                                         <li className="menu-icon">
-                                            <NavLink to="/blog">Blog</NavLink>
-                                        </li>
-                                        <li>
                                             <NavLink to="/contact">Contact</NavLink>
+                                        </li>
+                                        <li className="menu-icon">
+                                            <NavLink to="/agents">Agents</NavLink>
                                         </li>
                                     </ul>
                                 </div>
