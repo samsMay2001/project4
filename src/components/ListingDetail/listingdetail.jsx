@@ -50,7 +50,6 @@ function ListingDetail() {
 					<Reviews publicUrl={publicUrl}/>
 					
 				</div>
-				{/* ************************************************************* */}
 				</div>
 				<div className="col-lg-4">
 				<aside className="sidebar ltn__shop-sidebar ltn__right-sidebar---">

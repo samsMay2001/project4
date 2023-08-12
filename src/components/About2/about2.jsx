@@ -1,7 +1,7 @@
 function About2() {
     let publicUrl = process.env.PUBLIC_URL+'/'
     return ( 
-        <div className="ltn__about-us-area pt-120 pb-90 ">
+        <div className="ltn__about-us-area pt-120 pb-90 " style={{textAlign:'left'}}>
 			  <div className="container">
 			    <div className="row">
 			      <div className="col-lg-6 align-self-center">

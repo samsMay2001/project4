@@ -7,6 +7,9 @@ import Listings from './components/Listings/Listings';
 import ListingDetail from './components/ListingDetail/listingdetail';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
+import Services from './components/Services/services';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +19,9 @@ const router = createBrowserRouter(
       <Route path='/listing-details' element={<ListingDetail/>}/>
       <Route path='/login' element={<SignIn/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/Services' element={<Services/>}/>
+      <Route path='/about' element={<About/>}/>
+      <Route path='/contact' element={<Contact/>}/>
     </Route>
   )
 )

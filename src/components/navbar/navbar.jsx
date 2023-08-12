@@ -35,16 +35,13 @@ function NavBar () {
                                             <NavLink to="/listings">Listings</NavLink>
                                         </li>
                                         <li className="menu-icon">
-                                            <NavLink to="/service">Services</NavLink>
+                                            <NavLink to="/services">Services</NavLink>
                                         </li>
                                         <li className="menu-icon">
                                             <NavLink to="/about">About</NavLink>
                                         </li>
                                         <li className="menu-icon">
                                             <NavLink to="/contact">Contact</NavLink>
-                                        </li>
-                                        <li className="menu-icon">
-                                            <NavLink to="/agents">Agents</NavLink>
                                         </li>
                                     </ul>
                                 </div>
