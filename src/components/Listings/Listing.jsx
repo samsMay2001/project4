@@ -19,7 +19,7 @@ function Listing({publicUrl}) {
 											<span>$34,900<label>/Month</label></span>
 											</div>
 										</div>
-										<h2 className="product-title go-top"><Link to="/product-details">New Apartment Nice View</Link></h2>
+										<h2 className="product-title go-top"><Link to="/listing-details">New Apartment Nice View</Link></h2>
 										<div className="product-img-location go-top">
 											<ul>
 											<li>
@@ -61,7 +61,7 @@ function Listing({publicUrl}) {
 												<i className="flaticon-heart-1" /></a>
 											</li>
 											<li className="go-top">
-												<Link to="/product-details" title="Product Details">
+												<Link to="/listing-details" title="Product Details">
 												<i className="flaticon-add" />
 												</Link>
 											</li>

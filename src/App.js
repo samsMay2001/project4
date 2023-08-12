@@ -4,12 +4,14 @@ import Home from './components/home/home';
 import { AppContext } from './appContext';
 import RootLayout from './components/rootlayout/rootlayout';
 import Listings from './components/Listings/Listings';
+import ListingDetail from './components/ListingDetail/listingdetail';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout/>}>
       <Route index element={<Home/>}/>
       <Route path='/listings' element={<Listings/>}/>
+      <Route path='/listing-details' element={<ListingDetail/>}/>
     </Route>
   )
 )
