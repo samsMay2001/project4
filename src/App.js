@@ -10,6 +10,7 @@ import Register from './components/Register/Register';
 import Services from './components/Services/services';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
+import Account from './components/Account/Account';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path='/Services' element={<Services/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
+      <Route path='/my-account' element={<Account/>}/>
     </Route>
   )
 )
