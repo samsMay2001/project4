@@ -8,7 +8,7 @@ function ShopGridV1() {
     let publicUrl = process.env.PUBLIC_URL+'/'
     return ( 
         <div>
-			<div className="ltn__product-area ltn__product-gutter">
+			<div className="ltn__product-area ltn__product-gutter" >
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 order-lg-2 mb-100">
