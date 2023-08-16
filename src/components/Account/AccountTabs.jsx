@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function AccountTabs() {
     return ( 
         <div className="col-lg-4">
@@ -10,7 +12,7 @@ function AccountTabs() {
                     <a data-bs-toggle="tab" href="#ltn_tab_1_5">My Properties <i className="fa-solid fa-list" /></a>
                     <a data-bs-toggle="tab" href="#ltn_tab_1_6">Favorited Properties <i className="fa-solid fa-heart" /></a>
                     <a data-bs-toggle="tab" href="#ltn_tab_1_7">Add Property <i className="fa-solid fa-map-location-dot" /></a>
-                    <a href="login.html">Logout <i className="fas fa-sign-out-alt" /></a>
+                    <Link to="/login">Logout <i className="fas fa-sign-out-alt" /></Link>
                 </div>
             </div>
         </div>

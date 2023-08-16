@@ -1,7 +1,7 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import './App.css';
 import Home from './components/home/home';
-import { AppContext } from './appContext';
+import { AppContext, useAppContext } from './App/appContext';
 import RootLayout from './components/rootlayout/rootlayout';
 import Listings from './components/Listings/Listings';
 import ListingDetail from './components/ListingDetail/listingdetail';
@@ -11,6 +11,7 @@ import Services from './components/Services/services';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Account from './components/Account/Account';
+import { useState } from 'react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,12 +24,14 @@ const router = createBrowserRouter(
       <Route path='/Services' element={<Services/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/my-account' element={<Account/>}/>
+      <Route path='/my-account' element={<RequireAuth><Account/></RequireAuth>}/>
     </Route>
   )
 )
 
 function App() {
+  const [loggedUser, setLoggedUser] = useState(null); 
+  
 
   return (
     <div className="App">
@@ -37,6 +40,15 @@ function App() {
       </AppContext>
     </div>
   );
+}
+
+function RequireAuth ({children}) {
+  const {loggedUser} = useAppContext(); 
+  if (!loggedUser) {
+    return <Navigate to="/login"/>
+  }else {
+    return children
+  }
 }
 
 export default App;
