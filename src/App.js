@@ -11,7 +11,7 @@ import Services from './components/Services/services';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Account from './components/Account/Account';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,9 +29,7 @@ const router = createBrowserRouter(
   )
 )
 
-function App() {
-  const [loggedUser, setLoggedUser] = useState(null); 
-  
+function App() {  
 
   return (
     <div className="App">
@@ -44,6 +42,9 @@ function App() {
 
 function RequireAuth ({children}) {
   const {loggedUser} = useAppContext(); 
+  useEffect(()=> {
+    
+  })
   if (!loggedUser) {
     return <Navigate to="/login"/>
   }else {

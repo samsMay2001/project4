@@ -26,7 +26,7 @@ function TopBar() {
                                 <li>
                                 {/* header-top-btn */}
                                     <div className="header-top-btn">
-                                        <NavLink to="/add-listing">Add Listing</NavLink>
+                                        <NavLink to="/my-account">Add Listing</NavLink>
                                     </div>
                                 </li>
                             </ul>

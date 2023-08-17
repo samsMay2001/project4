@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import SideNavResponsive from "./sidenaveresponsive";
 import TopBar from "./topbar";
+import { useAppContext } from "../../App/appContext";
 
 function NavBar () {
+    const {loggedUser} = useAppContext()
     let publicUrl = process.env.PUBLIC_URL+'/'
         return (
 		<div>
@@ -53,11 +55,11 @@ function NavBar () {
 					<div className="ltn__drop-menu user-menu">
 						<ul>
                             <li>
-                                <NavLink to="/my-account"><i className="icon-user" /></NavLink>
+                                <i className="icon-user" style={{cursor :'pointer'}}/>
                                 <ul className="go-top">
                                     <li><NavLink to="/login">Sign in</NavLink></li>
                                     <li><NavLink to="/register">Register</NavLink></li>
-                                    <li><NavLink to="/my-account">My Account</NavLink></li>
+                                    {loggedUser && <li><NavLink to="/my-account">My Account</NavLink></li>}
                                 </ul>
                             </li>
 						</ul>
