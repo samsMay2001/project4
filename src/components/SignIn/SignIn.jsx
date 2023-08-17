@@ -51,8 +51,8 @@ function SignIn() {
 					<div className="col-lg-6">
 					<div className="account-login-inner">
 						<form  className="ltn__form-box contact-form-box">
-							<input type={'email'} name={'email' } value={formik.values.email} onChange={formik.handleChange} placeholder={'Email*'}/>
-                            <input type={'password'} name={'password' } value={formik.values.password} onChange={formik.handleChange} placeholder={'Password*'}/>
+							<input className={formik.errors.email && 'bad-field'} type={'email'} name={'email' } value={formik.values.email} onChange={formik.handleChange} placeholder={'Email*'}/>
+                            <input className={formik.errors.password && 'bad-field'} type={'password'} name={'password' } value={formik.values.password} onChange={formik.handleChange} placeholder={'Password*'}/>
 							<div className="btn-wrapper mt-0">
 								<button className="theme-btn-1 btn btn-block" type="button" onClick={test}>SIGN IN</button>
 							</div>

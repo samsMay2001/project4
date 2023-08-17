@@ -12,7 +12,7 @@ function AccountTabs() {
             <div className="ltn__tab-menu-list mb-50">
                 <div className="nav">                                            
                     {/* <a className="active show" data-bs-toggle="tab" href="#ltn_tab_1_1">Dashboard <i className="fas fa-home" /></a> */}
-                    <a data-bs-toggle="tab" href="#ltn_tab_1_2">Profile <i className="fas fa-user" /></a>
+                    <a className="active show" data-bs-toggle="tab" href="#ltn_tab_1_2">Profile <i className="fas fa-user" /></a>
                     <a data-bs-toggle="tab" href="#ltn_tab_1_3">address <i className="fas fa-map-marker-alt" /></a>
                     {/* <a data-bs-toggle="tab" href="#ltn_tab_1_4">Account Details <i className="fas fa-user" /></a> */}
                     <a data-bs-toggle="tab" href="#ltn_tab_1_5">My Properties <i className="fa-solid fa-list" /></a>
