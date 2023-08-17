@@ -43,7 +43,7 @@ function App() {
 function RequireAuth ({children}) {
   const {loggedUser} = useAppContext(); 
   useEffect(()=> {
-    
+    console.log('validating route')
   })
   if (!loggedUser) {
     return <Navigate to="/login"/>

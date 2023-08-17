@@ -28,7 +28,9 @@ function SignIn() {
 			}, 
 		}).then((res)=> {
 			setLoggedUser(res.data); 
+			localStorage.setItem('my-key', JSON.stringify(res.data))
 			navigate('/my-account'); 
+			
 		}).catch(err => console.log(err))
 	}
     return ( 

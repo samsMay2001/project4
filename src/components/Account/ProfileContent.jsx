@@ -1,6 +1,10 @@
+import { useAppContext } from "../../App/appContext";
+
 function ProfileContent({publicUrl}) {
+    const {loggedUser} = useAppContext()
+
     return ( 
-        <div className="tab-pane fade" id="ltn_tab_1_2">
+        <div className="tab-pane fade active show" id="ltn_tab_1_2">
 						<div className="ltn__myaccount-tab-content-inner">
 						  {/* comment-area */}
 						  <div className="ltn__comment-area mb-50">
@@ -10,7 +14,7 @@ function ProfileContent({publicUrl}) {
 							  </div>
 							  <div className="author-info">
 								<h6>Agent of Property</h6>
-								<h2>Rosalina D. William</h2>
+								<h2>{loggedUser.firstname} {loggedUser.lastname}</h2>
 								<div className="footer-address">
 								  <ul>
 									<li>
@@ -18,7 +22,7 @@ function ProfileContent({publicUrl}) {
 										<i className="icon-placeholder" />
 									  </div>
 									  <div className="footer-address-info">
-										<p>Brooklyn, New York, United States</p>
+										<p>{loggedUser.address}</p>
 									  </div>
 									</li>
 									<li>
@@ -34,14 +38,14 @@ function ProfileContent({publicUrl}) {
 										<i className="icon-mail" />
 									  </div>
 									  <div className="footer-address-info">
-										<p><a href="mailto:example@example.com">example@example.com</a></p>
+										<p><a href={`mailto:${loggedUser.email}`}>{loggedUser.email}</a></p>
 									  </div>
 									</li>
 								  </ul>
 								</div>
 							  </div>
 							</div>
-							<div className="ltn__form-box contact-form-box box-shadow white-bg">
+							{/* <div className="ltn__form-box contact-form-box box-shadow white-bg">
 							  <h4 className="title-2">Get A Quote</h4>
 							  <form id="contact-form" action="mail.php" method="post">
 								<div className="row">
@@ -83,7 +87,7 @@ function ProfileContent({publicUrl}) {
 								</div>
 								<p className="form-messege mb-0 mt-20" />
 							  </form>
-							</div>
+							</div> */}
 						  </div>
 						</div>
 					  </div>

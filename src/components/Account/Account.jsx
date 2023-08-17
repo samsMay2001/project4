@@ -24,10 +24,10 @@ function Account() {
 				  <AccountTabs/>
 				  <div className="col-lg-8">
 					<div className="tab-content">
-					  <DashboardContent/>
+					  {/* <DashboardContent/> */}
 					  <ProfileContent publicUrl={publicUrl}/>
 					  <Address publicUrl={publicUrl}/>
-                      <AccountDetails/>
+                      {/* <AccountDetails/> */}
 					  <MyProperties publicUrl={publicUrl} title={'My Properties'} id={'ltn_tab_1_5'}/>
 					  <MyProperties publicUrl={publicUrl} title={'Top Properties'} id={'ltn_tab_1_6'}/>
 					 <AddProperty/>
