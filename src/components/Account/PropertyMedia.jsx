@@ -1,4 +1,4 @@
-function PropertyMedia() {
+function PropertyMedia({form}) {
     return ( 
         <div>
             <h6>Listing Media</h6>
