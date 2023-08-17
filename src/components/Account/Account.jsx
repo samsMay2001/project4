@@ -7,7 +7,7 @@ import Address from "./Address";
 import MyProperties from "./MyProperties";
 import AccountDetails from "./AccountDetails";
 import AddProperty from "./AddProperty";
-
+import './account.css'
 function Account() {
     let publicUrl = process.env.PUBLIC_URL+'/'
     return ( 

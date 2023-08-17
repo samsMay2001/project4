@@ -9,8 +9,10 @@ import axios from "axios";
 import * as Yup from 'yup'; 
 import qs from 'qs'
 import { useAppContext } from "../../App/appContext";
+import { useNavigate } from "react-router-dom";
 function AddProperty() {
-    const {loggedUser} = useAppContext()
+    const {loggedUser, setListings} = useAppContext()
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues : {
             title : 'Diamond Maner Apartment', //
@@ -46,6 +48,10 @@ function AddProperty() {
         }).then((res)=> {
             console.log('added property successful'); 
             formik.resetForm(); 
+            setListings((oldVal)=> {
+                const listingsCopy = [...oldVal, formik.values]
+                return listingsCopy
+            })
         }).catch((err)=> console.log(err))
     }
     return ( 

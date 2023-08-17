@@ -7,21 +7,22 @@ const appContext = createContext(null);
 export const AppContext = ({children}) => {
     const [listings, setListings] = useState([])
     const [loggedUser, setLoggedUser] = useState(); 
-    // function getListings(){
-    //     axios.get('http://localhost:4000/properties').then((response) => {
-    //         console.log(response.data) // for debug remove later
-    //         setListings(response.data)
-    //     })
-    // }
+    function getListings(){
+        axios.get('http://localhost:4000/properties').then((response) => {
+            setListings(response.data)
+        })
+    }
     useEffect (()=> {
         // localStorage.clear()
         userSignedInfc(setLoggedUser); 
-        // getListings()
+        getListings()
     }, [])
     return (
         <appContext.Provider value={{
             loggedUser,
-            setLoggedUser
+            setLoggedUser, 
+            listings, 
+            setListings
         }}>
             {children}
         </appContext.Provider>
