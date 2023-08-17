@@ -9,7 +9,6 @@ import './register.css'
 import { useAppContext } from "../../App/appContext";
 function Register() {
     const navigate = useNavigate()
-    const [privacyTerms, setPrivacyTerms] = useState(false)
     const {setLoggedUser} = useAppContext()
     const formik = useFormik({
         initialValues: {
@@ -20,7 +19,10 @@ function Register() {
             terms: []
         }, 
         validationSchema: Yup.object({
-            firstname : Yup.string().max(15, "Must 15 character or less").required("Required")
+            firstname : Yup.string().max(15, "Must be 15 characters or less").required("Required"), 
+            lastname : Yup.string().max(15, 'Must be 15 characters or less').required("Required"), 
+            email : Yup.string().required("Required").email("Not a valid email"),
+            passsword: Yup.string().required('Required')
         }),
         onSubmit : (values)=> {
             const submitObj = {
