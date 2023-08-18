@@ -55,7 +55,7 @@ function AddProperty() {
         }).catch((err)=> console.log(err))
     }
     return ( 
-        <div className="tab-pane fade" id="ltn_tab_1_7">
+        <div className="" id="ltn_tab_1_7">
         <div className="ltn__myaccount-tab-content-inner">                                              
             <PropertyDescription formik={formik}/>
             <PropertyPrice formik={formik}/>

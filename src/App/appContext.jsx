@@ -7,6 +7,7 @@ const appContext = createContext(null);
 export const AppContext = ({children}) => {
     const [listings, setListings] = useState([])
     const [loggedUser, setLoggedUser] = useState(); 
+    const [propertyToEdit, setPropertyToEdit] = useState(); 
     function getListings(){
         axios.get('http://localhost:4000/properties').then((response) => {
             setListings(response.data)

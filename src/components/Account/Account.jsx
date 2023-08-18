@@ -8,8 +8,14 @@ import MyProperties from "./MyProperties";
 import AccountDetails from "./AccountDetails";
 import AddProperty from "./AddProperty";
 import './account.css'
+import { useState } from "react";
 function Account() {
     let publicUrl = process.env.PUBLIC_URL+'/'
+    const [prfTab, setprfTab] = useState(true); 
+    const [adrTab, setAdrTab] = useState(false); 
+    const [prlsTab, setPrlsTab] = useState(false); 
+    const [favTab, setFavTab] = useState(false); 
+    const [adPrTab, setAdPrTab] = useState(false); 
     return ( 
         <div>
             <PageHeader headertitle={'My Account'}/>
@@ -21,16 +27,27 @@ function Account() {
 			<div className="ltn__product-tab-area">
 			  <div className="container">
 				<div className="row">
-				  <AccountTabs/>
+				  <AccountTabs 
+                    setAdPrTab={setAdPrTab} 
+                    setprfTab = {setprfTab} 
+                    setAdrTab = {setAdrTab} 
+                    setPrlsTab={setPrlsTab} 
+                    setFavTab={setFavTab}
+                    prfTab = {prfTab}
+                    adrTab = {adrTab}
+                    prlsTab = {prlsTab}
+                    favTab = {favTab}
+                    adPrTab = {adPrTab}
+                  />
 				  <div className="col-lg-8">
 					<div className="tab-content">
-					  {/* <DashboardContent/> */}
-					  <ProfileContent publicUrl={publicUrl}/>
-					  <Address publicUrl={publicUrl}/>
-                      {/* <AccountDetails/> */}
-					  <MyProperties publicUrl={publicUrl} title={'My Properties'} id={'ltn_tab_1_5'}/>
-					  <MyProperties publicUrl={publicUrl} title={'Top Properties'} id={'ltn_tab_1_6'}/>
-					 <AddProperty/>
+					    {/* <DashboardContent/> */}
+					    {prfTab && <ProfileContent publicUrl={publicUrl}/>}
+					    {adrTab && <Address publicUrl={publicUrl}/>}
+                        {/* <AccountDetails/> */}
+					    {prlsTab && <MyProperties publicUrl={publicUrl} title={'My Properties'} id={'ltn_tab_1_5'}/>}
+					    {favTab && <MyProperties publicUrl={publicUrl} title={'Top Properties'} id={'ltn_tab_1_6'}/>}
+					    {adPrTab && <AddProperty/>}
 					</div>
 				  </div>
 				</div>

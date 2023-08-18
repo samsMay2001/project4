@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import qs from 'qs';
+import { useAppContext } from "../../App/appContext";
 
 function MyProperty({publicUrl, listing}) {
+    const {setListings} = useAppContext()
+    function deleteItem(){
+        axios.post('http://localhost:4000/deleteproperty', qs.stringify({propertyId : listing._id}), {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then((res)=> {
+            setListings((oldVal)=> {
+                const listingsCopy = [...oldVal]
+                const newCopy = listingsCopy.filter(item => item._id !== listing._id)
+                return newCopy
+            })
+            console.log('property deleted successfuly')
+        }).catch(err => console.log(err))
+    }
     return ( 
         <tr>
             <td className="ltn__my-properties-img go-top">
@@ -23,8 +41,8 @@ function MyProperty({publicUrl, listing}) {
                 </div>
             </td>
             <td>{listing.dateAvailable}</td>
-            <td><Link to="#">Edit</Link></td>
-            <td><Link tp="#"><i className="fa-solid fa-trash-can" /></Link></td>
+            <td><Link to="#"></Link></td>
+            <td><Link onClick={deleteItem} ><i className="fa-solid fa-trash-can" /></Link></td>
         </tr>
      );
 }
