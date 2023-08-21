@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function ListingDetailTxt() {
+function ListingDetailTxt({currentListing}) {
     return ( 
         <div>
             <div className="ltn__blog-meta">
@@ -10,38 +11,26 @@ function ListingDetailTxt() {
                     </li>
                     <li className="ltn__blog-category">
                         <Link className="bg-orange" to="#">
-                        For Rent
-                    </Link>
+                            {currentListing.category2 === "Rentals" &&"For Rent"}
+                            {currentListing.category2 === "Sales" &&"For Sell"}
+                        </Link>
                     </li>
                     <li className="ltn__blog-date">
                         <i className="far fa-calendar-alt" />
-                        May 19, 2021
-                    </li>
-                    <li>
-                        <Link to="#">
-                            <i className="far fa-comments" />
-                            35 Comments
-                        </Link>
+                        {currentListing.dateAvailable}
                     </li>
                 </ul>
             </div>
-            <h1>Diamond Manor Apartment</h1>
+            <h1>{currentListing.title}</h1>
             <label>
                 <span className="ltn__secondary-color">
                     <i className="flaticon-pin" />
-                </span>{' '}
-                Belmont Gardens, Chicago
+                </span> {currentListing.address}
+                {}
             </label>
             <h4 className="title-2">Description</h4>
             <p>
-            Massa tempor nec feugiat nisl pretium. Egestas fringilla
-            phasellus faucibus scelerisque eleifend donec Porta nibh
-            venenatis cras sed felis eget velit aliquet. Neque volutpat ac
-            tincidunt vitae semper quis lectus. Turpis in eu mi bibendum
-            neque egestas congue quisque. Sed elementum tempus egestas sed
-            sed risus pretium quam. Dignissim sodales ut eu sem. Nibh mauris
-            cursus mattis molestee iaculis at erat pellentesque. Id interdum
-            velit laoreet id donec ultrices tincidunt.
+"Stunning home with modern elegance. Spacious living areas, gourmet kitchen with top-notch appliances. Tranquil outdoor space, perfect for relaxation. Master suite with luxurious bath. High-end finishes throughout. Close to amenities and parks. Don't miss this opportunity!"
             </p>
             <p>
             To the left is the modern kitchen with central island, leading

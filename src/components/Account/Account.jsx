@@ -46,7 +46,7 @@ function Account() {
 					    {adrTab && <Address publicUrl={publicUrl}/>}
                         {/* <AccountDetails/> */}
 					    {prlsTab && <MyProperties publicUrl={publicUrl} title={'My Properties'} id={'ltn_tab_1_5'}/>}
-					    {favTab && <MyProperties publicUrl={publicUrl} title={'Top Properties'} id={'ltn_tab_1_6'}/>}
+					    {favTab && <MyProperties publicUrl={publicUrl} title={'Top Properties'} favProp={true} id={'ltn_tab_1_6'}/>}
 					    {adPrTab && <AddProperty/>}
 					</div>
 				  </div>

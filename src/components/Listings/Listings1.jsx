@@ -3,9 +3,28 @@ import Sidebar from "../SideBar/sidebar";
 import './Listings.css'
 import Listing from "./Listing";
 import FavModal from "./FavModal";
+import { useAppContext } from "../../App/appContext";
+import { useEffect, useState } from "react";
 
 function ShopGridV1() {
     let publicUrl = process.env.PUBLIC_URL+'/'
+    const {listings} = useAppContext()
+    const [filteredListings, setFilteredListings] = useState([])
+    const [numbers, setNumbers] = useState()
+    const [pages, setPages] = useState()
+    const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(()=> {
+        const recordsPerPage = 3
+        const lastIndex = currentPage * recordsPerPage
+        const firstIndex = lastIndex - recordsPerPage
+        const records = listings.slice(firstIndex, lastIndex)
+        const pages = Math.ceil(listings.length / recordsPerPage)
+        const numbers = [...Array(pages + 1).keys()].slice(1)
+        setNumbers(numbers)
+        setFilteredListings(records)
+        setPages(pages)
+    }, [listings, currentPage])
     return ( 
         <div>
 			<div className="ltn__product-area ltn__product-gutter" >
@@ -43,7 +62,7 @@ function ShopGridV1() {
 								</li>
 							</ul>
 							</div>
-							<div className="tab-content">
+							<div className="tab-content listings">
                                 <div className="tab-pane fade  active show" id="liton_product_list">
                                     <div className="ltn__product-tab-content-inner ltn__product-list-view">
                                         <div className="row">
@@ -56,29 +75,23 @@ function ShopGridV1() {
                                                     </form>
                                                 </div>
                                             </div>
-                                            {/* ltn__product-item */}
-                                            {/* ltn__product-item */}
-                                            <Listing publicUrl={publicUrl}/>
-                                            {/* ltn__product-item */}
-                                            <Listing publicUrl={publicUrl}/>
-                                            {/* ltn__product-item */}
-                                            <Listing publicUrl={publicUrl}/>
-                                            {/* ltn__product-item */}
+                                            {filteredListings && filteredListings.map((item, index)=> (
+                                                <Listing key={index} listing={item} publicUrl={publicUrl}/>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
 							</div>
 							<div className="ltn__pagination-area text-center">
                                 <div className="ltn__pagination">
-                                    <ul>
-                                    <li className=""><Link to="#"><i className="fas fa-angle-double-left" /></Link></li>
-                                    <li className="active"><Link to="#">1</Link></li>
-                                    <li className=""><Link to="#">2</Link></li>
-                                    <li><Link to="#">3</Link></li>
-                                    <li><Link to="#">...</Link></li>
-                                    <li><Link to="#">10</Link></li>
-                                    <li><Link to="#"><i className="fas fa-angle-double-right" /></Link></li>
-                                    </ul>
+                                <ul>
+                                    <li><i className="fas fa-angle-double-left" /></li>
+                                    {numbers && numbers.map((i,d)=> (
+                                        <li onClick={()=>{setCurrentPage(i)}}><Link>{i}</Link></li>
+                                    )
+                                    )}
+                                    <li><i className="fas fa-angle-double-right" /></li>
+                                </ul>
                                 </div>
 							</div>
 						</div>

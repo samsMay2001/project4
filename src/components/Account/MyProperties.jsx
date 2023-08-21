@@ -3,15 +3,18 @@ import MyProperty from "./MyProperty";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../App/appContext";
 
-function MyProperties({publicUrl, title, id}) {
+function MyProperties({publicUrl, title, id, favProp}) {
     const {listings, loggedUser} = useAppContext()
     const [filteredListings, setFilteredListings] = useState([])
     const [currentPage, setCurrentPage] = useState(1); 
     const [pages, setPages] = useState()
     const [numbers, setNumbers] = useState()
     
-    function sortListings(listings, id) {
+    function sortListings(listings, id, favProp) {
+        // filer out the listings beloning to the user
         const filteredListings = listings.filter(listing => listing.agentId === id);
+        
+        // pagination
         const recordsPerPage = 3
         const lastIndex = currentPage * recordsPerPage
         const firstIndex = lastIndex - recordsPerPage
@@ -19,11 +22,18 @@ function MyProperties({publicUrl, title, id}) {
         const pages = Math.ceil(filteredListings.length / recordsPerPage)
         const numbers = [...Array(pages + 1).keys()].slice(1)
         setNumbers(numbers)
-        setFilteredListings(records)
+
+        // sort out favorite properties
+        if (favProp){
+            const favProps = records.filter( listing => loggedUser.favorites.includes(listing._id)); 
+            setFilteredListings(favProps); 
+        }else {
+            setFilteredListings(records)
+        }
         setPages(pages)
     }
     useEffect(()=> {
-        sortListings(listings, loggedUser._id)
+        sortListings(listings, loggedUser._id, favProp)
     }, [currentPage, listings])
     return ( 
         <div className="" id={id}>
