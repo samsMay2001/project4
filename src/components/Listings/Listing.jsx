@@ -1,16 +1,35 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../App/appContext";
-
+import axios from "axios";
+import qs from 'qs'
 
 function Listing({publicUrl, listing}) {
-    const {agents, setCurrentListing, setCurrentAgent} = useAppContext()
+    const {agents, setCurrentListing, setCurrentAgent, setLoggedUser, loggedUser} = useAppContext()
     const [agent, setAgent] = useState()
     function findAgent(){
         const agentIndex = agents.findIndex(agent => agent._id == listing.agentId); 
         setAgent(agents[agentIndex]); 
         setCurrentListing(listing)
         setCurrentAgent(agents[agentIndex])
+    }
+    function addToFav(){
+        setLoggedUser((oldVal)=> {
+            const loggedUserCopy = {...oldVal}; 
+            loggedUserCopy.favorites = [...oldVal.favorites, listing._id]
+            axios.post('http://localhost:4000/edit', qs.stringify(loggedUserCopy), {
+                header: {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+            }).then((res)=> {
+                console.log('added to favorites')
+                return loggedUserCopy
+            }).catch((err)=> {
+                console.log(err)
+                return oldVal
+            })
+            return loggedUserCopy;
+        })
     }
     useEffect(()=> {
         findAgent()
@@ -65,18 +84,13 @@ function Listing({publicUrl, listing}) {
                     </div>
                     <div className="product-hover-action">
                         <ul>
-                            <li>
-                                <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                <i className="flaticon-expand" />
-                                </a>
-                            </li>
-                            <li>
+                            <li onClick={addToFav}>
                                 <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                 <i className="flaticon-heart-1" /></a>
                             </li>
                             <li className="go-top">
                                 <Link to="/listing-details" title="Product Details">
-                                <i className="flaticon-add" />
+                                    <i className="flaticon-add" />
                                 </Link>
                             </li>
                         </ul>
