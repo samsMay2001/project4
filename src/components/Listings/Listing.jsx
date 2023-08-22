@@ -7,6 +7,7 @@ import qs from 'qs'
 function Listing({publicUrl, listing}) {
     const {agents, setCurrentListing, setCurrentAgent, setLoggedUser, loggedUser} = useAppContext()
     const [agent, setAgent] = useState()
+    const [fav, setFav] = useState(false) 
     function findAgent(){
         const agentIndex = agents.findIndex(agent => agent._id == listing.agentId); 
         setAgent(agents[agentIndex]); 
@@ -17,12 +18,23 @@ function Listing({publicUrl, listing}) {
         setLoggedUser((oldVal)=> {
             const loggedUserCopy = {...oldVal}; 
             loggedUserCopy.favorites = [...oldVal.favorites, listing._id]
-            axios.post('http://localhost:4000/edit', qs.stringify(loggedUserCopy), {
+            const updateObj = {
+                firstname : loggedUserCopy.firstname, 
+                lastname : loggedUserCopy.lastname,
+                email : loggedUserCopy.email, 
+                password : loggedUserCopy.password,
+                address : loggedUserCopy.address, 
+                favorites : loggedUserCopy.favorites
+            }
+            axios.post('http://localhost:4000/edit', qs.stringify(updateObj), {
                 header: {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
             }).then((res)=> {
                 console.log('added to favorites')
+                setFav((oldVal)=> {
+                    return !oldVal
+                })
                 return loggedUserCopy
             }).catch((err)=> {
                 console.log(err)
@@ -84,7 +96,7 @@ function Listing({publicUrl, listing}) {
                     </div>
                     <div className="product-hover-action">
                         <ul>
-                            <li onClick={addToFav}>
+                            <li className={fav && 'favorite-on'} onClick={addToFav}>
                                 <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                 <i className="flaticon-heart-1" /></a>
                             </li>

@@ -9,3 +9,7 @@
     border: 1px dashed grey;
     min-height: 1000px !important;
 } */
+.favorite-on{
+    background-color: var(--ltn__secondary-color) !important;
+    color: white;
+}
