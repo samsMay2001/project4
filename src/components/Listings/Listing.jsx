@@ -15,34 +15,39 @@ function Listing({publicUrl, listing}) {
         setCurrentAgent(agents[agentIndex])
     }
     function addToFav(){
-        setLoggedUser((oldVal)=> {
-            const loggedUserCopy = {...oldVal}; 
-            loggedUserCopy.favorites = [...oldVal.favorites, listing._id]
-            const updateObj = {
-                firstname : loggedUserCopy.firstname, 
-                lastname : loggedUserCopy.lastname,
-                email : loggedUserCopy.email, 
-                password : loggedUserCopy.password,
-                address : loggedUserCopy.address, 
-                favorites : loggedUserCopy.favorites
-            }
-            axios.post('http://localhost:4000/edit', qs.stringify(updateObj), {
+        setFav((oldVal)=>{
+            addFavUpdate(oldVal); 
+            return !oldVal
+        })
+    }
+    
+    async function addFavUpdate( addedToFav){
+        const loggedUserCopy = {...loggedUser}
+        if (!addedToFav){ // add this property to the user's favorites
+            loggedUserCopy.favorites = [...loggedUser.favorites, listing._id]
+        } else { // filter this property from the user's favorites
+            loggedUserCopy.favorites = loggedUser.favorites.filter(favorite => favorite !== listing._id); 
+        }
+        const updateObj = {
+            firstname : loggedUserCopy.firstname, 
+            lastname : loggedUserCopy.lastname,
+            email : loggedUserCopy.email, 
+            password : loggedUserCopy.password,
+            address : loggedUserCopy.address, 
+            favorites : loggedUserCopy.favorites
+        }
+        try {
+            await axios.post('http://localhost:4000/edit', qs.stringify(updateObj), {
                 header: {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
-            }).then((res)=> {
-                console.log('added to favorites')
-                setFav((oldVal)=> {
-                    return !oldVal
-                })
-                return loggedUserCopy
-            }).catch((err)=> {
-                console.log(err)
-                return oldVal
             })
-            return loggedUserCopy;
-        })
-    }
+            console.log('added to favorites')
+            setLoggedUser(loggedUserCopy)
+        }catch(err){
+            console.log(err, 'there was an error')
+        }
+    } 
     useEffect(()=> {
         findAgent()
     }, [])
