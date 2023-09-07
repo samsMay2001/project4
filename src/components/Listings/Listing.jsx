@@ -20,7 +20,7 @@ function Listing({publicUrl, listing}) {
             return !oldVal
         })
     }
-    
+
     async function addFavUpdate( addedToFav){
         const loggedUserCopy = {...loggedUser}
         if (!addedToFav){ // add this property to the user's favorites
@@ -44,12 +44,19 @@ function Listing({publicUrl, listing}) {
             })
             console.log('added to favorites')
             setLoggedUser(loggedUserCopy)
+            localStorage.setItem('my-key', JSON.stringify(loggedUserCopy)); 
         }catch(err){
             console.log(err, 'there was an error')
         }
     } 
+    function filterFavProperties(){
+        const isFav = loggedUser.favorites.includes(listing._id); 
+        setFav(isFav); 
+
+    }
     useEffect(()=> {
         findAgent()
+        filterFavProperties(); 
     }, [])
     return ( 
         <div className="col-lg-12">
